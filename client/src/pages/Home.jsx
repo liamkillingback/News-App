@@ -1,7 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { BlogPost } from "../components";
+import React from 'react'
 import "@coreui/coreui/dist/css/coreui.min.css";
-import { blogPosts } from "../constants";
 import { hero } from "../assets";
 
 const Home = () => {
