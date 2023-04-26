@@ -4,5 +4,55 @@
 
 
 #root {
-  background-image: url('./assets/background.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.99)), url('./assets/background2.jpg');
+  min-height:100vh;
+}
+.backg {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('./assets/herobg.png');
+  background-size: cover;
+  max-height:75vh;
+}
+
+#permalink_section
+{
+    white-space: pre-wrap; /* CSS3 */    
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */    
+    white-space: -o-pre-wrap; /* Opera 7 */    
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+pre {
+  max-width: 90%;
+  font-size:0.9rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+h1 {
+  font-size: 3rem;
+
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.w-screen p {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+@media screen and (max-width: 1000px) {
+  .w-screen p {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

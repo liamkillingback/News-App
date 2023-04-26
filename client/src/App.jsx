@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { Navbar } from "./components";
-import { Home, ArticlePage } from "./pages";
+import { ArticlePage, NewsPage} from "./pages";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -13,8 +11,8 @@ function App() {
       <BrowserRouter>
       <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/articles/:id" element={<ArticlePage />} />
+          <Route path="/" element={<NewsPage />} />
+          <Route path="/articles/:id" element={<ArticlePage />} />          
         </Routes>
       </BrowserRouter>
 

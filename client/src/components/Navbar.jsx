@@ -1,13 +1,11 @@
 import { Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { logo } from "../assets";
+import { logo, logoWide } from "../assets";
+import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "News", href: "/", current: false }
 ];
 
 function classNames(...classes) {
@@ -15,10 +13,9 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const [navActive, setNavActive] = useState("Dashboard");
-
+  const [navActive, setNavActive] = useState("Blog");
   return (
-    <Disclosure as="nav" className="fixed z-10 w-screen bg-[rgba(0,0,0,0.35)]">
+    <Disclosure as="nav" className="fixed z-10 w-screen bg-[rgba(0,0,0,0.6)]">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl z-10 px-2 sm:px-6 lg:px-8">
@@ -38,32 +35,36 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src={logo}
+                    src={logoWide}
                     alt="Your Company"
                   />
+                  <NavLink onClick={() => setNavActive("Blog")} to="/"> 
                   <img
-                    className="hidden h-8 w-auto lg:block"
-                    src={logo}
+                    className="hidden h-10 w-auto lg:block"
+                    src={logoWide}
                     alt="Your Company"
                   />
+                  </NavLink>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex z-20 space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setNavActive(item.name)}
-                        className={classNames(
-                          navActive === item.name
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm  font-medium transition-all"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
+                    {navigation.map((item, index) => (
+                      <NavLink to={item.href}>
+                        <div
+                          key={index}
+                          href={item.href}
+                          onClick={() => setNavActive(item.name)}
+                          className={classNames(
+                            navActive === item.name
+                              ? "bg-gray-900 text-white"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            "rounded-md px-3 py-2 text-sm  font-medium transition-all"
+                          )}
+                          aria-current={item.current ? "page" : undefined}
+                        >
+                          {item.name}
+                        </div>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -139,10 +140,10 @@ const Navbar = () => {
 
           <Disclosure.Panel className="sm:hidden bg-[rgba(0,0,0,0.9)] ">
             <div className="space-y-1 px-2  pb-3 pt-2">
-              {navigation.map((item) => (
+              {navigation.map((item, index) => (
                 <Disclosure.Button
                   onClick={() => setNavActive(item.name)}
-                  key={item.name}
+                  key={index}
                   as="a"
                   href={item.href}
                   className={classNames(
